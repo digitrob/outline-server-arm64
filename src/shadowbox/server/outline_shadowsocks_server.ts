@@ -96,7 +96,7 @@ export class OutlineShadowsocksServer implements ShadowsocksServer {
       mkdirp.sync(path.dirname(this.configFilename));
 
       try {
-        file.atomicWriteFileSync(this.configFilename, jsyaml.safeDump(keysJson, {sortKeys: true}));
+        file.atomicWriteFileSync(this.configFilename, jsyaml.dump(keysJson, {sortKeys: true}));
         resolve();
       } catch (error) {
         reject(error);

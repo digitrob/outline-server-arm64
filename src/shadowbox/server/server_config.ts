@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import * as uuidv4 from 'uuid/v4';
+import {v4 as uuidv4} from 'uuid';
 
 import * as json_config from '../infrastructure/json_config';
 import {DataLimit} from '../model/access_key';
@@ -41,7 +41,7 @@ export interface ServerConfigJson {
   // Experimental configuration options that are expected to be short-lived.
   experimental?: {
     // Whether ASN metric annotation for Prometheus is enabled.
-    asnMetricsEnabled?: boolean;  // DEPRECATED
+    asnMetricsEnabled?: boolean; // DEPRECATED
   };
 }
 

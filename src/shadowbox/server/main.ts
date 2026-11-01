@@ -18,7 +18,7 @@ import * as path from 'path';
 import * as process from 'process';
 import * as prometheus from 'prom-client';
 import * as restify from 'restify';
-import * as corsMiddleware from 'restify-cors-middleware2';
+import {createCorsMiddleware} from './cors';
 
 import {RealClock} from '../infrastructure/clock';
 import {PortProvider} from '../infrastructure/get_port';
@@ -47,15 +47,15 @@ const MMDB_LOCATION_ASN = '/var/lib/libmaxminddb/ip-asn.mmdb';
 
 async function exportPrometheusMetrics(registry: prometheus.Registry, port): Promise<http.Server> {
   return new Promise<http.Server>((resolve, _) => {
-    const server = http.createServer((_, res) => {
+    const server = http.createServer(async (_, res) => {
       res.setHeader('Content-Type', registry.contentType);
-      res.write(registry.metrics());
-      res.end();
+      // prom-client 13+ returns the metrics as a promise.
+      res.end(await registry.metrics());
     });
     server.on('listening', () => {
       resolve(server);
     });
-    server.listen({port, host: 'localhost', exclusive: true});
+    server.listen({port, host: '127.0.0.1', exclusive: true});
   });
 }
 
@@ -239,12 +239,7 @@ async function main() {
   });
 
   // Pre-routing handlers
-  const cors = corsMiddleware({
-    origins: ['*'],
-    allowHeaders: [],
-    exposeHeaders: [],
-    credentials: false,
-  });
+  const cors = createCorsMiddleware();
   apiServer.pre(cors.preflight);
   apiServer.pre(restify.pre.sanitizePath());
 

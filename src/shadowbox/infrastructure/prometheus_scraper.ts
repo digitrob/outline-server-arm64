@@ -105,7 +105,7 @@ export class ApiPrometheusClient implements PrometheusClient {
   private readonly agent: http.Agent;
 
   constructor(private address: string) {
-    this.agent = new http.Agent({ keepAlive: true });
+    this.agent = new http.Agent({keepAlive: true});
   }
 
   private request(url: string): Promise<QueryResultData> {
@@ -162,7 +162,7 @@ export async function startPrometheus(
 
 async function writePrometheusConfigToDisk(configFilename: string, configJson: {}) {
   await mkdirp.sync(path.dirname(configFilename));
-  const ymlTxt = jsyaml.safeDump(configJson, {sortKeys: true});
+  const ymlTxt = jsyaml.dump(configJson, {sortKeys: true});
   // Write the file asynchronously to prevent blocking the node thread.
   await new Promise<void>((resolve, reject) => {
     fs.writeFile(configFilename, ymlTxt, 'utf-8', (err) => {

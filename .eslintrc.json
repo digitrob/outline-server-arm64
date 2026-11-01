@@ -27,7 +27,11 @@
           {
             "target": "./src/shadowbox/infrastructure",
             "from": ".",
-            "except": ["./src/shadowbox/infrastructure", "./node_modules"]
+            "except": [
+              "./src/shadowbox/infrastructure",
+              "./node_modules",
+              "./src/shadowbox/node_modules"
+            ]
           },
           {
             "target": "./src/server_manager/infrastructure",
@@ -44,7 +48,12 @@
           {
             "target": "./src/shadowbox/model",
             "from": ".",
-            "except": ["./src/shadowbox/model", "./src/shadowbox/infrastructure", "./node_modules"]
+            "except": [
+              "./src/shadowbox/model",
+              "./src/shadowbox/infrastructure",
+              "./node_modules",
+              "./src/shadowbox/node_modules"
+            ]
           },
           {
             "target": "./src/server_manager/model",
@@ -70,6 +79,9 @@
     ],
     "no-prototype-builtins": "off",
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-unsafe-function-type": "off",
+    "@typescript-eslint/no-require-imports": "off",
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
       {

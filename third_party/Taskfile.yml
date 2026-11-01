@@ -11,16 +11,16 @@ tasks:
   prometheus:download-*-*:
     desc: Download and extract prometheus binary
     vars:
-      VERSION: '2.53.4'
+      VERSION: '3.15.1'
       GOOS: '{{index .MATCH 0}}'
       GOARCH: '{{index .MATCH 1}}'
       TEMPFILE: {sh: mktemp}
       SHA256: '{{printf "%v/%v" .GOOS .GOARCH | get
           (dict
-            "linux/amd64" "b8b497c4610d1b93208252b60c8f20f6b2e78596ae8df43397a2e805aa53d475"
-            "linux/arm64" "ec7236ecea7154d0bfe142921708b1ae7b5e921e100e0ee85ab92b7c444357e0"
-            "darwin/amd64" "10066a1aa21c4ddb8d5e61c31b52e898d8ac42c7e99fd757e2fc4b6c20b8075f"
-            "darwin/arm64" "cb3e638d8e9b4b27a6aa1f45a4faa3741b548aac67d4649aea7a2fad3c09f0a1"
+            "linux/amd64" "6a726885328ad9efebbf36e876ce2fb6225468a71fd1e7ce3ba666d5f4d97a84"
+            "linux/arm64" "ceb6d21493c37ca0b4513b147642797c68cf39a0f50a444d50e1e80c74f21b26"
+            "darwin/amd64" "c89fcb30045d8c394c9d93e96cbbee3aaf2448a48326b417e811eb4e528edf88"
+            "darwin/arm64" "0d4d3d9837d27e4fcd0bd16d115b1b8d6732a4bf3e69107f1190d9ef653ae471"
           )
         }}'
       TARGET_DIR: '{{joinPath .OUTPUT_BASE "prometheus" .GOOS .GOARCH}}'
