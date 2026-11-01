@@ -199,8 +199,12 @@ jobs:
 
       # npm 11 no longer runs dependency install scripts unless they are
       # approved, so download the Chromium that Puppeteer/Karma need explicitly.
+      # Remove the incomplete revision folder first: Puppeteer skips the
+      # download whenever the folder exists, even if it has no browser binary.
       - name: Install Chromium
-        run: node node_modules/puppeteer/install.js
+        run: |
+          rm -rf node_modules/puppeteer/.local-chromium
+          node node_modules/puppeteer/install.js
 
       - name: Sentry Webhook Debug Build
         run: ./task sentry_webhook:build
