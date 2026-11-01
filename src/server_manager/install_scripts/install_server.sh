@@ -18,7 +18,7 @@
 # (to automatically update the server), and to create a new Outline user.
 
 # You may set the following environment variables, overriding their defaults:
-# SB_IMAGE: The Outline Server Docker image to install, e.g. quay.io/outline/shadowbox:nightly
+# SB_IMAGE: The Outline Server Docker image to install, e.g. ghcr.io/digitrob/outline-server-arm64:latest
 # CONTAINER_NAME: Docker instance name for shadowbox (default shadowbox).
 #     For multiple instances also change SHADOWBOX_DIR to an other location
 #     e.g. CONTAINER_NAME=shadowbox-inst1 SHADOWBOX_DIR=/opt/outline/inst1
@@ -481,7 +481,7 @@ install_shadowbox() {
   fi
   readonly API_PORT
   readonly ACCESS_CONFIG="${ACCESS_CONFIG:-${SHADOWBOX_DIR}/access.txt}"
-  readonly SB_IMAGE="${SB_IMAGE:-quay.io/outline/shadowbox:stable}"
+  readonly SB_IMAGE="${SB_IMAGE:-ghcr.io/digitrob/outline-server-arm64:latest}"
 
   PUBLIC_HOSTNAME="${FLAGS_HOSTNAME:-${SB_PUBLIC_IP:-}}"
   if [[ -z "${PUBLIC_HOSTNAME}" ]]; then

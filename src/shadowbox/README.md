@@ -9,7 +9,7 @@ The Outline Server, internal name "Shadowbox," is designed to streamline the set
 1. **Run the Installation Script**
 
    ```sh
-   sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/OutlineFoundation/outline-apps/master/server_manager/install_scripts/install_server.sh)"
+   sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/digitrob/outline-server-arm64/master/src/server_manager/install_scripts/install_server.sh)"
    ```
 
 1. **Customize (Optional)**
@@ -17,7 +17,7 @@ The Outline Server, internal name "Shadowbox," is designed to streamline the set
    Add flags for hostname, port, etc. Example:
 
    ```sh
-   sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/OutlineFoundation/outline-apps/master/server_manager/install_scripts/install_server.sh)" install_server.sh \
+   sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/digitrob/outline-server-arm64/master/src/server_manager/install_scripts/install_server.sh)" install_server.sh \
      --hostname=myserver.com \
      --keys-port=443
    ```
@@ -30,8 +30,9 @@ The Outline Server, internal name "Shadowbox," is designed to streamline the set
 **Prerequisites**
 
 - [Docker](https://docs.docker.com/engine/install/)
-- [Node](https://nodejs.org/en/download/) LTS (`lts/hydrogen`, version `18.16.0`)
-- [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (version `9.5.1`)
+- [Node](https://nodejs.org/en/download/) LTS (`lts/lithium`, version `26.13.0`)
+- [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (version `11.20.0`)
+- [Go](https://go.dev/dl/) 1.27+
 
 > [!TIP]
 > If you use `nvm`, switch to the correct Node version with `nvm use`.
