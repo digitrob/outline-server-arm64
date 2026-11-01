@@ -14,7 +14,7 @@
 // limitations under the License.
 
 const {makeConfig} = require('./test.webpack.js');
-process.env.CHROMIUM_BIN = require('puppeteer').executablePath();
+process.env.CHROMIUM_BIN = process.env.CHROMIUM_BIN || require('puppeteer').executablePath();
 
 const baseConfig = makeConfig({
   defaultMode: 'development',
